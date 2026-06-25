@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>巅峰国际 · 稳定服务入口</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background-color: #f5f7fa;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    /* 深色主视觉头图 */
+    .hero {
+      background: linear-gradient(145deg, #0b1120 0%, #1a2332 100%);
+      padding: 4rem 2rem 5rem;
+      text-align: center;
+      color: #e2e8f0;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: linear-gradient(to top, #f5f7fa, transparent);
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+      margin-bottom: 1rem;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin: 0 auto 1.6rem;
+      opacity: 0.8;
+      font-weight: 300;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(99, 102, 241, 0.2);
+      color: #a5b4fc;
+      border: 1px solid #4f46e5;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+    }
+
+    /* 正文区 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.8rem 3rem;
+    }
+
+    /* 信息卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin: -1.2rem auto 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 1.8rem 2.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.08);
+    }
+
+    .card .emoji-icon {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #334155;
+      margin-bottom: 0.3rem;
+    }
+
+    .card .meta-tag {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: #eef2ff;
+      color: #4338ca;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    /* 适合人群卡片：单独横条 */
+    .audience-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.5rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+      margin-bottom: 2.5rem;
+    }
+
+    .audience-section h2 {
+      font-size: 1.7rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #0f172a;
+      margin-bottom: 1.2rem;
+    }
+
+    .audience-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.5rem;
+      list-style: none;
+    }
+
+    .audience-list li {
+      background: #f1f5f9;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+    }
+
+    /* 自然链接段落 */
+    .link-para {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+      margin-bottom: 2.5rem;
+    }
+
+    .link-para p {
+      font-size: 1.02rem;
+      margin-bottom: 1.4rem;
+      color: #1e293b;
+    }
+
+    .link-para a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #c7d2fe;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .link-para a:hover {
+      color: #312e81;
+      border-bottom-color: #312e81;
+    }
+
+    /* FAQ摘要 */
+    .faq-mini {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2rem 2rem 2.2rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.03);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #eef2f6;
+      padding-bottom: 1rem;
+    }
+
+    .faq-item:last-child,
+    .faq-item:nth-last-child(2) {
+      border-bottom: 0;
+    }
+
+    .faq-item .q {
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+    }
+
+    .faq-item .a {
+      font-size: 0.92rem;
+      color: #475569;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d1d5db, transparent);
+      margin: 2.8rem 0 1.8rem;
+    }
+
+    .footer-note {
+      font-size: 0.9rem;
+      color: #64748b;
+      text-align: center;
+      padding: 1rem 0 2.5rem;
+    }
+
+    .footer-note a {
+      color: #4f46e5;
+      text-decoration: none;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+
+      .faq-mini {
+        grid-template-columns: 1fr;
+      }
+
+      .audience-list {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 3rem 1.2rem 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色主视觉 -->
+  <header class="hero">
+    <h1>巅峰国际</h1>
+    <p class="sub">一个持续运转的线上服务界面，保持简洁、可靠与清晰。</p>
+    <span class="tagline">信息服务 · 稳定入口</span>
+  </header>
+
+  <div class="container">
+
+    <!-- 用途卡片 -->
+    <div class="card-grid">
+      <div class="card">
+        <span class="emoji-icon">📋</span>
+        <h3>信息查阅</h3>
+        <p>提供结构化的内容索引，方便快速了解服务模块与相关说明。页面布局经过梳理，减少不必要的跳转。</p>
+        <span class="meta-tag">基础功能</span>
+      </div>
+      <div class="card">
+        <span class="emoji-icon">🔗</span>
+        <h3>导航支持</h3>
+        <p>作为进入不同功能区的起点，<a href="https://cnweb-dianfengguoji.com" style="color:#4f46e5; text-decoration:underline; border-bottom:none;">巅峰国际</a> 保持直接的路径指引，不堆叠复杂菜单。</p>
+        <span class="meta-tag">页面结构</span>
+      </div>
+    </div>
+
+    <!-- 适合人群 -->
+    <div class="audience-section">
+      <h2>适合这样的人群</h2>
+      <ul class="audience-list">
+        <li>需要稳定访问入口的日常用户</li>
+        <li>偏好干净、无干扰界面的访客</li>
+        <li>希望通过一个页面快速了解服务脉络的人</li>
+        <li>对网站结构有基础预期的使用者</li>
+      </ul>
+    </div>
+
+    <!-- 自然链接段落（嵌入链接） -->
+    <div class="link-para">
+      <p>
+        这个页面并不打算成为功能中心，更像是一个稳定的说明牌。如果你需要进入实际的服务界面，可以前往 <a href="https://cnweb-dianfengguoji.com">巅峰国际</a>。那里保留了主要操作区域，并且沿用了同样的视觉逻辑。
+      </p>
+      <p>
+        页面采用卡片式布局将不同用途分开，同时保留深色头图与浅色正文的对比。所有链接都使用强调色标注，在阅读中自然定位。事实上，整个设计都围绕一个想法：让人先理解，再行动。
+      </p>
+    </div>
+
+    <!-- FAQ摘要 -->
+    <div class="faq-mini">
+      <div class="faq-item">
+        <div class="q">这个页面会经常变化吗？</div>
+        <div class="a">结构保持相对稳定，但内容会随服务更新而调整，以反映当前状态。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">从哪里可以找到更多说明？</div>
+        <div class="a">主要说明集中在主站 <a href="https://cnweb-dianfengguoji.com" style="color:#4f46e5; text-decoration:none; border-bottom:1px solid #c7d2fe;">巅峰国际</a> 的对应板块，本页仅做摘要式介绍。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">卡片里的链接是否安全？</div>
+        <div class="a">所有指向的地址均经过确认，与主站域名保持一致，可放心浏览。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">移动端显示效果如何？</div>
+        <div class="a">页面采用响应式栅格，在手机和平板上会自动调整为单列布局，并保留可读字号。</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="footer-note">
+      <span>关于 <a href="https://cnweb-dianfengguoji.com">巅峰国际</a> 的更多细节，可访问对应页面查阅。</span>
+    </div>
+
+  </div>
+
+</body>
+</html>
